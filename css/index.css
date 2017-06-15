@@ -1,0 +1,66 @@
+body{
+    background-color: #FFDDAA;
+}
+img{
+    display: none;
+}
+#cvs{
+    display: none;
+    float: left;
+}
+#cvsPos{
+    width: 700px;
+    height: 600px;
+    position: absolute; top: 3px; left:350px;
+}
+#controlmove{
+    position: absolute; top: 80px; left:50px;
+    display: none;
+}
+#moveBoard{
+    width: 100px;
+    height: 600px;
+    cursor: move;
+    background-color: white;
+    font-size: 45px;
+    color: grey;
+    opacity: 0.5;
+    display: none;
+    float: right;
+}
+#showMove{
+    display: none;
+}
+#showResult{
+    position: absolute; top: 200px; left:100px;  
+}
+#start{
+    position: absolute; top: 320px; left:590px;
+    cursor: pointer;
+    font-size: 30px;
+    color: grey;
+}
+#reset{
+    position: absolute; top: 50px; left:50px;
+    display: none;
+}
+#turn{
+    font-size: 20px;
+    font-weight: bold;
+    width: 400px;
+}
+#beforeGame{
+    position: absolute; top: 50px; left:400px;
+    font-size: 25px;
+    padding: 50px;
+    font-weight: bold;
+    width: 480px;
+    height:480px;
+    color: black; 
+    background-color: #FFDDAA;
+}
+p{
+    position: relative; top: 30px; left:60px;
+    font-size: 20px;
+    font-weight: bold;
+}
