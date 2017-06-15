@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>五子棋</title>
+
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="./js/index.js"></script>
+</head>
+<body >
+	<img id="scream" width="220" height="277" src="./images/1.jpg" alt="The Scream">
+	<div id=beforeGame>
+		<h1>我的五子棋遊戲</h1>
+		<p>點擊"start"即可開始遊戲</p>
+	</div>
+
+	<div  id=cvsPos style="top: 3px; left: 350px;">
+		<div id="moveBoard" 
+		onmousedown="mouseDown();" 
+		onmousemove="mouseMove();"  
+		onmouseup="mouseUp();"
+		style="top: 0px; left: 605px;"
+		unselectable="on" 
+		style="-moz-user-select:none;-webkit-user-select:none;" 
+		onselectstart="return false;">
+			按<br>住<br>我<br>可<br>以<br>移<br>動<br>棋<br>盤<br>位<br>置
+		</div>
+
+		<canvas id="cvs" width="600" height="600"  onclick="chessPosition();">
+			Your browser does not support the HTML5 canvas tag.
+		</canvas>
+	</div>
+
+	<p id=start onclick="start();">start</p>
+	<button id=controlmove onclick="showMboard()">移動棋盤</button>
+	<button id=reset onclick="reset();">重來一次</button>
+
+	<div id=showMove>
+		<span id=showMoveX></span>
+		<span id=showMoveY></span>
+	</div>
+
+	<div id=showResult>
+		<span id=turn></span>
+	</div>
+</body>
+</html>
