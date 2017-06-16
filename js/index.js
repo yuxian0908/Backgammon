@@ -1,4 +1,15 @@
 var cvs,ctx;
+window.onload=function(){
+    //小螢幕判斷
+    if(document.body.clientWidth<600){
+        document.getElementById("cvs").style.display="block";
+        document.getElementById("cvs").width="350";
+        document.getElementById("cvs").height="350";
+        document.getElementById("cvsPos").style.width="350px";
+        document.getElementById("cvsPos").style.height="350px";
+    }
+}
+
 function start() {
     cvs = document.getElementById("cvs");
     ctx = cvs.getContext("2d");
@@ -9,6 +20,19 @@ function start() {
     document.getElementById("reset").style.display="block";
     document.getElementById("start").style.display="none";
     document.getElementById("cvs").style.display="block";
+    document.getElementById("cvsPos").style.display="block";
+
+    //小螢幕
+    if(document.body.clientWidth<600){
+        document.getElementById("cvsPos").style.top="2px";
+        document.getElementById("cvsPos").style.left="2px";
+        document.getElementById("reset").style.top="550px";
+        document.getElementById("reset").style.left="135px";
+        document.getElementById("controlmove").style.display="none";
+
+        document.getElementById("showResult").style.top = "370px";
+        document.getElementById("showResult").style.left = "10px";
+    }
 }
 
 function reset(){
@@ -31,33 +55,71 @@ function chessPosition(){
     var rect = cvs.getBoundingClientRect();
     var x=event.clientX-rect.left+20;
     var y=event.clientY-rect.top+20;
-    xPosition[0]=50;
-    yPosition[0]=50;
+    var totalWidth=document.getElementById("cvs").width;
+    var totalHeight=document.getElementById("cvs").height;
+    
+    xPosition[0]=totalWidth/12;
+    yPosition[0]=totalHeight/12;
 
-    for(var i=1;i<9;i++){//設定棋盤格的x像素
-        xPosition[i]=xPosition[i-1]+64;
+    //設定棋盤格
+        //小螢幕
+    if(document.body.clientWidth<600){
+        for(var i=1;i<9;i++){//設定棋盤格的x像素
+            xPosition[i]=xPosition[i-1]+totalWidth*34/(9*36);
+        }
+        for(var j=1;j<9;j++){//設定棋盤格的x像素
+            yPosition[j]=yPosition[j-1]+totalHeight*34/(9*36);
+        }
     }
-    for(var j=1;j<9;j++){//設定棋盤格的x像素
-        yPosition[j]=yPosition[j-1]+64;
+        //大螢幕
+    else{
+        for(var i=1;i<9;i++){//設定棋盤格的x像素
+            xPosition[i]=xPosition[i-1]+totalWidth*23/(9*24);
+        }
+        for(var j=1;j<9;j++){//設定棋盤格的x像素
+            yPosition[j]=yPosition[j-1]+totalHeight*23/(9*24);
+        }
     }
 
-    //設定棋盤格序列
+    //偵測點擊位置 歸入棋盤格序列
     var numberx;
     var numbery;
-    for(numberx=0;numberx<9;numberx++){
-        if(x-xPosition[numberx]>50){
+        //小螢幕
+    if(document.body.clientWidth<600){
+        for(numberx=0;numberx<9;numberx++){
+            if(x-xPosition[numberx]>totalWidth*23/(18*24)+15){
+            }
+            else{
+                x=xPosition[numberx];
+                break;
+            }
         }
-        else{
-            x=xPosition[numberx];
-            break;
+        for(numbery=0;numbery<9;numbery++){
+            if(y-yPosition[numbery]>totalHeight*23/(18*24)+15){
+            }
+            else{
+                y=yPosition[numbery];
+                break;
+            }
         }
     }
-    for(numbery=0;numbery<9;numbery++){
-        if(y-yPosition[numbery]>50){
+        //大螢幕
+    else{
+        for(numberx=0;numberx<9;numberx++){
+            if(x-xPosition[numberx]>totalWidth*23/(18*24)+10){
+            }
+            else{
+                x=xPosition[numberx];
+                break;
+            }
         }
-        else{
-            y=yPosition[numbery];
-            break;
+        for(numbery=0;numbery<9;numbery++){
+            if(y-yPosition[numbery]>totalHeight*23/(18*24)+10){
+            }
+            else{
+                y=yPosition[numbery];
+                break;
+            }
         }
     }
     var showX=document.getElementById("showMoveX");
@@ -112,25 +174,50 @@ function ary(Pos,x,y){
         }    
     }
 
+
     //繪製棋子
-    if(Pos[showX][showY]==1){//counter若是基數次為黑棋
-        cvs = document.getElementById("cvs");
-        ctx = cvs.getContext("2d");
-        ctx.beginPath();
-        ctx.arc(x-4,y-4,30,0,2*Math.PI);
-        ctx.fillStyle="black";
-        ctx.fill();
-        ctx.stroke();  
+        //小螢幕
+    if(document.body.clientWidth<600){
+        if(Pos[showX][showY]==1){//counter若是基數次為黑棋
+            cvs = document.getElementById("cvs");
+            ctx = cvs.getContext("2d");
+            ctx.beginPath();
+            ctx.arc(x,y,17,0,2*Math.PI);
+            ctx.fillStyle="black";
+            ctx.fill();
+            ctx.stroke();  
+        }
+        if(Pos[showX][showY]==-1){//counter若是偶數次為白棋
+            cvs = document.getElementById("cvs");
+            ctx = cvs.getContext("2d");
+            ctx.beginPath();
+            ctx.arc(x,y,17,0,2*Math.PI);
+            ctx.fillStyle="white";
+            ctx.fill();
+            ctx.stroke();  
+        } 
     }
-    if(Pos[showX][showY]==-1){//counter若是偶數次為白棋
-        cvs = document.getElementById("cvs");
-        ctx = cvs.getContext("2d");
-        ctx.beginPath();
-        ctx.arc(x-4,y-4,30,0,2*Math.PI);
-        ctx.fillStyle="white";
-        ctx.fill();
-        ctx.stroke();  
-    }    
+        //大螢幕
+    else {
+        if(Pos[showX][showY]==1){//counter若是基數次為黑棋
+            cvs = document.getElementById("cvs");
+            ctx = cvs.getContext("2d");
+            ctx.beginPath();
+            ctx.arc(x-4,y-4,30,0,2*Math.PI);
+            ctx.fillStyle="black";
+            ctx.fill();
+            ctx.stroke();  
+        }
+        if(Pos[showX][showY]==-1){//counter若是偶數次為白棋
+            cvs = document.getElementById("cvs");
+            ctx = cvs.getContext("2d");
+            ctx.beginPath();
+            ctx.arc(x-4,y-4,30,0,2*Math.PI);
+            ctx.fillStyle="white";
+            ctx.fill();
+            ctx.stroke();  
+        } 
+    }   
     decide(Pos);
 }
 

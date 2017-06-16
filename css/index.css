@@ -12,6 +12,7 @@ img{
     width: 700px;
     height: 600px;
     position: absolute; top: 3px; left:350px;
+    display: none;
 }
 #controlmove{
     position: absolute; top: 80px; left:50px;
@@ -34,12 +35,7 @@ img{
 #showResult{
     position: absolute; top: 200px; left:100px;  
 }
-#start{
-    position: absolute; top: 320px; left:590px;
-    cursor: pointer;
-    font-size: 30px;
-    color: grey;
-}
+
 #reset{
     position: absolute; top: 50px; left:50px;
     display: none;
@@ -50,17 +46,27 @@ img{
     width: 400px;
 }
 #beforeGame{
-    position: absolute; top: 50px; left:400px;
-    font-size: 25px;
     padding: 50px;
-    font-weight: bold;
-    width: 480px;
-    height:480px;
     color: black; 
     background-color: #FFDDAA;
+    text-align: center;
 }
-p{
-    position: relative; top: 30px; left:60px;
-    font-size: 20px;
+#beforeGame>h1{
+    font-size: 40px;
     font-weight: bold;
+}
+#beforeGame>p{
+    font-size: 20px;
+    margin-top: 30px;
+    font-weight: bold;
+}
+#beforeGame>#start{
+    cursor: pointer;
+    font-size: 30px;
+    color: grey;
+}
+
+
+@media screen and (max-width: 600px){
+
 }

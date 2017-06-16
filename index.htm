@@ -6,14 +6,26 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>五子棋</title>
 
+    <!-- 引入bootstrap,jquery -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+	<!-- 引入自己的css,js -->
     <link rel="stylesheet" href="./css/index.css">
     <script src="./js/index.js"></script>
 </head>
 <body >
+	<!-- 剛載入畫面的顯示 -->
 	<img id="scream" width="220" height="277" src="./images/1.jpg" alt="The Scream">
-	<div id=beforeGame>
-		<h1>我的五子棋遊戲</h1>
-		<p>點擊"start"即可開始遊戲</p>
+	<div class="row">
+		<div class="col-sm-4"></div>
+		<div class="col-sm-4" id=beforeGame>
+			<h1>我的五子棋遊戲</h1>
+			<p>點擊"start"即可開始遊戲</p>
+			<p id=start onclick="start();">start</p>
+		</div>
+		<div class="col-sm-4"></div>
 	</div>
 
 	<div  id=cvsPos style="top: 3px; left: 350px;">
@@ -33,9 +45,8 @@
 		</canvas>
 	</div>
 
-	<p id=start onclick="start();">start</p>
-	<button id=controlmove onclick="showMboard()">移動棋盤</button>
-	<button id=reset onclick="reset();">重來一次</button>
+	<button class="btn btn-primary" id=controlmove onclick="showMboard()">移動棋盤</button>
+	<button class="btn btn-primary" id=reset onclick="reset();">重來一次</button>
 
 	<div id=showMove>
 		<span id=showMoveX></span>
