@@ -26,7 +26,7 @@ function start() {
     if(document.body.clientWidth<600){
         document.getElementById("cvsPos").style.top="2px";
         document.getElementById("cvsPos").style.left="2px";
-        document.getElementById("reset").style.top="550px";
+        document.getElementById("reset").style.top="430px";
         document.getElementById("reset").style.left="135px";
         document.getElementById("controlmove").style.display="none";
 
